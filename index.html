@@ -8,6 +8,8 @@
     <style>
         body{
             background-color: #0d1117;
+            color: white;
+            font-size: 20px;
         }
         h1{
             color: white;
@@ -48,14 +50,20 @@
        
 </script>
     <div class="main">
-        <h1>Random Image Generator</h1>
-        <input type="text" id="name">
-        <button onclick=get()>Search</button>
+        <form>
+
+            <h1>Random Image Generator</h1>
+            Name:   <input type="text" required id="name">
+            Size:       <input type="text" required id="size">
+            <button type="submit" onclick=get()>Search</button>
+        </form>
+
         
         <br>
         <hr>
         <img id="img" src="https://i.pinimg.com/736x/b9/c5/34/b9c5344544ba5f44997f4190dfdf273d.jpg" alt="">
            <br>
+           
            <button onclick=next()>Next ⚡</button>
     </div>
 
@@ -64,8 +72,11 @@
         var imgasrc= document.getElementById('img').src=actual
         
         function get(){
+           var Size = document.getElementById("size").value
+
+           
             var names=document.getElementById("name").value
-            var imgname = "https://source.unsplash.com/500x500/?"+names
+            var imgname = "https://source.unsplash.com/"+Size+"x"+Size+"/?"+names
             localStorage.setItem("img" , imgname )
             var actual = localStorage.getItem("img")
             var imgasrc= document.getElementById('img').src=actual
